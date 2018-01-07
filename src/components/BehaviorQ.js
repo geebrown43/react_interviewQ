@@ -1,5 +1,8 @@
 import React from 'react'
 import '../App.css'
+import Alert from './Alert'
+import { Button } from "react-bootstrap";
+
 
 
 export default class List extends React.Component{
@@ -8,7 +11,8 @@ export default class List extends React.Component{
         this.state = {
             data: [],
             selection: 1,
-            value: ''
+            value: '',
+            alertVisible: false
 
         }
     }
@@ -32,8 +36,12 @@ export default class List extends React.Component{
                   "Content-Type": "application/json"
               }
           })
-          this.refs.form.reset()
+         let el = document.getElementById('form')
+         return el.value === ''
       }
+       resetForm = () => {
+           this.setState()
+       }
 
         
     
@@ -41,7 +49,11 @@ export default class List extends React.Component{
       
         return(
                 <div className="listcontainer">
+                    <div className="nav">
                     <h2>Behavioral Questions</h2>
+                    <a href="/">Home</a>
+                    </div>
+                    
                     <div className="formstyle">
                         <div>
                             <select name="questions" className="input-size" onChange={e=> this.setState({selection: e.target.value})}> {this.state.data.map(a =>
@@ -49,12 +61,16 @@ export default class List extends React.Component{
                             </select>
                         </div>
                         <div className="answer-display">
-                            <label htmlFor="answer">Answer</label>
-                            <form onSubmit={this.handleSubmit} ref="form">
+                            <label htmlFor="answer">Your Answer</label>
+                            <form onSubmit={this.handleSubmit} ref="form" id="form">
                                 <input type="text" name="answer" className="input-size spacing" value={this.state.value} onChange={e => this.setState({value:e.target.value})}/>
                                 <p>{this.state.value}</p>
-                                <button className="input-size spacing">Submit Answer</button>
+                                <button className="input-size spacing">Submit</button>
                             </form>
+                        </div>
+
+                        <div className="answer-container">
+                            <Alert selection = {this.state.selection}/>
                         </div>
                     </div>
                 </div>
