@@ -1,7 +1,9 @@
 import React from 'react'
 import '../App.css'
 import Alert from './Alert'
-import { Button } from "react-bootstrap";
+import {Grid, Col} from 'react-bootstrap'
+import Select from 'react-select'
+import 'react-select/dist/react-select.css'
 
 
 
@@ -10,7 +12,8 @@ export default class List extends React.Component{
         super()
         this.state = {
             data: [],
-            selection: 1,
+            selection: 0,
+            name: '',
             value: '',
             alertVisible: false
 
@@ -46,31 +49,41 @@ export default class List extends React.Component{
         
     
     render(){
-      
         return(
                 <div className="listcontainer">
                     <div className="nav">
                     <h2>Behavioral Questions</h2>
-                    <a href="/">Home</a>
+                    <a href="/" className='home-link'>Home</a>
                     </div>
                     
                     <div className="formstyle">
-                        <div>
-                            <select name="questions" className="input-size" onChange={e=> this.setState({selection: e.target.value})}> {this.state.data.map(a =>
+                        <div className='select-option'>
+                           <Grid>
+                               <Col md={6} mdOffset={3}>
+                               <Select name='interviewQ' value={this.state.name} onChange={e => this.setState({selection: e.value, name: e.value})} options={this.state.data} clearable={false}/>
+                               </Col>
+                           </Grid>
+                            
+                            {/* <select name="questions" className="input-size" onChange={e=> this.setState({selection: e.target.value})}> {this.state.data.map(a =>
                                 <option value={a.id} key={a.id}>{a.question}</option>)}
-                            </select>
+                            </select> */}
                         </div>
                         <div className="answer-display">
                             <label htmlFor="answer">Your Answer</label>
                             <form onSubmit={this.handleSubmit} ref="form" id="form">
-                                <input type="text" name="answer" className="input-size spacing" value={this.state.value} onChange={e => this.setState({value:e.target.value})}/>
+                                <input type="text" name="answer" className="input-size " value={this.state.value} onChange={e => this.setState({value:e.target.value})}/>
                                 <p>{this.state.value}</p>
-                                <button className="input-size spacing">Submit</button>
+                                <button className="spacing">Submit</button>
                             </form>
                         </div>
 
                         <div className="answer-container">
-                            <Alert selection = {this.state.selection}/>
+                                <Grid>
+                                    <Col md={4} mdOffset={4}>
+                                    <Alert selection = {this.state.selection}/>
+                                    </Col>                  
+                                </Grid>
+                            
                         </div>
                     </div>
                 </div>
