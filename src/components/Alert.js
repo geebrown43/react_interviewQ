@@ -27,11 +27,12 @@ export default class AlertCon extends React.Component {
         let data = this.state.data
         if(this.state.alertVisible){
             return(
+                <div className="alert-align">
                 <Alert bsStyle='success' onDismiss={this.handleDismiss}>
                 <div>
                     <div className="question">
                         <label htmlFor="question">Question</label>
-                        <p>{data.question}</p>
+                        <p>{data.label}</p>
                     </div>
                     <div className="answer">
                         <label htmlFor="answer">Answer</label>
@@ -40,6 +41,8 @@ export default class AlertCon extends React.Component {
                 </div>
                     
                 </Alert>
+                </div>
+                
             )
         } else {
             return (
