@@ -39,12 +39,7 @@ export default class List extends React.Component{
                   "Content-Type": "application/json"
               }
           })
-         let el = document.getElementById('form')
-         return el.value === ''
       }
-       resetForm = () => {
-           this.setState()
-       }
 
         
     
