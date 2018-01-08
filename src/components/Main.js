@@ -5,6 +5,7 @@ import {
   NavLink
 } from 'react-router-dom'
 import BehaviorQ from './BehaviorQ'
+import TechnicalQ from './TechnicalQ'
 import {PageHeader} from 'react-bootstrap';
 
 export default class Main extends React.Component{
@@ -15,6 +16,7 @@ export default class Main extends React.Component{
                   <div>
                     <Route exact path="/" component={Header}/>
                     <Route exact path="/behavior" component={BehaviorQ}/>
+                    <Route exact path = "/front-end" component={TechnicalQ}/>
 
                     <div className="navbar">
 
