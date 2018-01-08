@@ -9,21 +9,27 @@
 .selected {
   display: none
 }
+.home-link{
+  font-size: 18px;
+}
 .navbar {
-  margin-left: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-decoration: none;
-  color: red
+  text-align: left;
+  margin-top: 10px;
 }
 
 .input-size {
-  width: 30%
+  width: 30%;
+  border: 1px solid lightgray;
+  border-radius: 3px;
 }
 .formstyle{
   display: flex;
-  flex-direction: column
+  flex-direction: column;
+  margin-top: 10px;
 }
 
 .answer-display {
@@ -32,8 +38,14 @@
   margin-top: 15px;
 }
 
+
 .spacing {
   margin: 10px;
+  width: 30%;
+  color: white;
+  background-color: rgb(177, 222, 111);
+  border-radius: 5px;
+  font-size: 18px;
 }
 
 .listcontainer {
@@ -41,8 +53,9 @@
 }
 
 .link-style {
-  color: red;
   font-size: 20px;
+  margin: 5px;
+  text-align: left
 }
 .link-style:hover{
   color: black;
@@ -51,4 +64,10 @@
 
 #form {
   margin: 10px;
+}
+
+@media (max-width: 640px){
+  .alert-align{
+    width: 80vw
+  }
 }
